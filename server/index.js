@@ -23,6 +23,9 @@ app.get("/", async (req, res) => {
     message: "FiTrack backend is live!",
   });
 });
+app.get("/api", (req, res) => {
+  res.status(200).json({ message: "API is working fine 👌" });
+});
 
 // Use the imported User routes
 app.use("/api/user", UserRoutes);
