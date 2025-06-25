@@ -89,12 +89,12 @@ const Input = styled.input`
     `
     font-size: 12px;
   `}
-
   ${({ popup, theme }) =>
     popup &&
     `
   color: ${theme.popup_text_secondary};
-  `} ${({ theme }) => theme.popup_text_secondary};
+  `}
+  ${({ theme }) => theme.popup_text_secondary};
 `;
 
 const Error = styled.p`
@@ -133,7 +133,7 @@ const TextInput = ({
   name,
   value,
   error,
-  handelChange,
+  onChange, // ✅ corrected prop name
   textArea,
   rows,
   columns,
@@ -146,6 +146,7 @@ const TextInput = ({
   password,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
+
   return (
     <Container small={small}>
       <Label small={small} popup={popup} error={error}>
@@ -173,7 +174,7 @@ const TextInput = ({
               placeholder={placeholder}
               name={name}
               value={value}
-              onChange={(e) => handelChange(e)}
+              onChange={onChange} // ✅ fixed
             />
           </ChipWrapper>
         ) : (
@@ -187,19 +188,15 @@ const TextInput = ({
               columns={columns}
               placeholder={placeholder}
               value={value}
-              onChange={(e) => handelChange(e)}
+              onChange={onChange} // ✅ fixed
               type={password && !showPassword ? "password" : "text"}
             />
             {password && (
               <>
                 {showPassword ? (
-                  <>
-                    <Visibility onClick={() => setShowPassword(false)} />
-                  </>
+                  <Visibility onClick={() => setShowPassword(false)} />
                 ) : (
-                  <>
-                    <VisibilityOff onClick={() => setShowPassword(true)} />
-                  </>
+                  <VisibilityOff onClick={() => setShowPassword(true)} />
                 )}
               </>
             )}
