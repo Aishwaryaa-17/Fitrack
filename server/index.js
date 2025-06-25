@@ -11,9 +11,13 @@ console.log("MONGODB_URL:", process.env.MONGODB_URL);
 
 const app = express();
 app.use(cors({
-  origin: "https://fitrack-ais.vercel.app", // should be your Vercel frontend URL
+  origin: [
+    "https://fitrack-ais.vercel.app",
+    "https://fitrack-ais-git-main-aishwarya-guptas-projects-a0aa37e8.vercel.app"
+  ],
   credentials: true
 }));
+
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 
