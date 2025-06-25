@@ -11,10 +11,7 @@ console.log("MONGODB_URL:", process.env.MONGODB_URL);
 
 const app = express();
 app.use(cors({
-  origin: [
-    "https://fitrack-ais.vercel.app",
-    "https://fitrack-ais-git-main-aishwarya-guptas-projects-a0aa37e8.vercel.app"
-  ],
+  origin:"https://fitrack-sage.vercel.app/",
   credentials: true
 }));
 
