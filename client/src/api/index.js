@@ -23,5 +23,5 @@ export const addWorkout = async (token, body) =>
     headers: { Authorization: `Bearer ${token}` },
   });
   export const submitFeedback = async (data) => 
-    API.post("/feedback", data);
+    API.post("/contact/feedback", data);
   
