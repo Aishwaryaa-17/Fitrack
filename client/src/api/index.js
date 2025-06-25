@@ -2,7 +2,7 @@ import axios from "axios";
 
 // 🔄 Change this to your live Render backend URL
 const API = axios.create({
-  baseURL: "https://fitrack-r3wo.onrender.com"
+  baseURL: "https://fitrack-aish.onrender.com/"
 });
 
 export const UserSignUp = async (data) => API.post("/user/signup", data);
