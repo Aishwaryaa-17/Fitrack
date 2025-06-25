@@ -11,7 +11,7 @@ console.log("MONGODB_URL:", process.env.MONGODB_URL);
 
 const app = express();
 app.use(cors({
-  origin:"https://fitrack-sage.vercel.app/",
+  origin:"https://fitrack-sage.vercel.app",
   credentials: true
 }));
 
