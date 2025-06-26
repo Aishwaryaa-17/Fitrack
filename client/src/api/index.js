@@ -2,7 +2,10 @@ import axios from "axios";
 
 // 🔄 Change this to your live Render backend URL
 const API = axios.create({
-  baseURL: "https://fitrack-aish.onrender.com/api/"
+  baseURL:
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000/api"
+      : "https://fitrack-aish.onrender.com/api",
 });
 
 export const UserSignUp = async (data) => API.post("/user/signup", data);
@@ -25,3 +28,4 @@ export const addWorkout = async (token, body) =>
   export const submitFeedback = async (data) => 
     API.post("/contact/feedback", data);
   
+  export default API;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Rating } from "@mui/material";
 import { showSuccess, showError } from "../utils/alert";
+import API from "../services/api"; 
+import { submitFeedback } from "../api/feedback";
 
 const Container = styled.div`
   flex: 1;
@@ -171,9 +173,14 @@ const ContactPage = () => {
       showError("Invalid Email", "Please enter a valid email address.");
       return;
     }
-
+    const API_BASE_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000/api"
+      : "https://fitrack-aish.onrender.com/api";
+  
     try {
-      const res = await fetch("http://localhost:5000/api/feedback", {
+      const res = await fetch(`${API_BASE_URL}/contact/feedback`, 
+        {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
