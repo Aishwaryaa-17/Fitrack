@@ -1,5 +1,6 @@
 import express from 'express';
 import Feedback from '../models/Feedback.js'; // Assuming the model for feedback is in this file
+import { handleContactForm } from "../controllers/FeedbackController.js";
 
 const router = express.Router();
 
