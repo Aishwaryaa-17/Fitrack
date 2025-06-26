@@ -173,11 +173,8 @@ const ContactPage = () => {
       showError("Invalid Email", "Please enter a valid email address.");
       return;
     }
-    const API_BASE_URL =
-    import.meta.env.MODE === "development"
-      ? "http://localhost:5000/api/contact/feedback"
-      : "https://fitrack-aish.onrender.com/api/contact/feedback";
-  
+    const API_BASE_URL = "https://fitrack-aish.onrender.com/api";
+
     try {
       console.log("Using API Base URL:", API_BASE_URL);
       const res = await fetch(`${API_BASE_URL}/contact/feedback`, 
