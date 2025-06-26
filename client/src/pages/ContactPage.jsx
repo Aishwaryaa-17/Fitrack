@@ -174,9 +174,9 @@ const ContactPage = () => {
       return;
     }
     const API_BASE_URL =
-    import.meta.env.VITE_API_BASE_URL === "development"
-      ? "http://localhost:5000/api"
-      : "https://fitrack-aish.onrender.com/api";
+    import.meta.env.MODE === "development"
+      ? "http://localhost:5000/api/contact/feedback"
+      : "https://fitrack-aish.onrender.com/api/contact/feedback";
   
     try {
       console.log("Using API Base URL:", API_BASE_URL);
