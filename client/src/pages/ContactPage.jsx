@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Rating } from "@mui/material";
 import { showSuccess, showError } from "../utils/alert";
-import API, { submitFeedback } from "../api/index.js";
+// import API from "../api"; 
+// import { submitFeedback } from "../api/index.js";
+import API, { submitFeedback } from "../api"; // ✅ no error
 
 
 const Container = styled.div`

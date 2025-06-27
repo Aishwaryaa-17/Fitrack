@@ -24,4 +24,4 @@ export const addWorkout = async (token, body) =>
   export const submitFeedback = async (data) => 
     API.post("/contact/feedback", data);
   
-  export default API;
+export default API;
