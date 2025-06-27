@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Rating } from "@mui/material";
 import { showSuccess, showError } from "../utils/alert";
-import API from "../services/api"; 
-import { submitFeedback } from "../api/feedback";
+import API, { submitFeedback } from "../api/index.js";
+
 
 const Container = styled.div`
   flex: 1;
@@ -158,47 +158,78 @@ const ContactPage = () => {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const { name, email, message, rating } = formData;
+
+  //   if (!name || !email || !message || rating === 0) {
+  //     showError("Missing Fields", "Please fill in all fields and provide a rating.");
+  //     return;
+  //   }
+
+  //   const fitEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  //   if (!fitEmailRegex.test(email)) {
+  //     showError("Invalid Email", "Please enter a valid email address.");
+  //     return;
+  //   }
+  //   const API_BASE_URL = "https://fitrack-aish.onrender.com/api";
+
+  //   try {
+  //     console.log("Using API Base URL:", API_BASE_URL);
+  //     const res = await fetch(`${API_BASE_URL}/contact/feedback`, 
+  //       {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     const data = await res.json();
+
+  //     if (res.ok) {
+  //       showSuccess("Thank You!", data.message || "Your feedback has been submitted.");
+  //       setFormData({ name: "", email: "", message: "", rating: 0 });
+  //     } else {
+  //       showError("Error", data.message || "Failed to submit feedback.");
+  //     }
+  //   } catch (err) {
+  //     console.error("Error submitting feedback:", err);
+  //     showError("Network Error", "Something went wrong. Please try again.");
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const { name, email, message, rating } = formData;
-
+  
     if (!name || !email || !message || rating === 0) {
       showError("Missing Fields", "Please fill in all fields and provide a rating.");
       return;
     }
-
+  
     const fitEmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!fitEmailRegex.test(email)) {
       showError("Invalid Email", "Please enter a valid email address.");
       return;
     }
-    const API_BASE_URL = "https://fitrack-aish.onrender.com/api";
-
+  
     try {
-      console.log("Using API Base URL:", API_BASE_URL);
-      const res = await fetch(`${API_BASE_URL}/contact/feedback`, 
-        {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        showSuccess("Thank You!", data.message || "Your feedback has been submitted.");
+      const response = await submitFeedback(formData); // ✅ use your API function
+  
+      if (response.status === 200) {
+        showSuccess("Thank You!", response.data.message || "Your feedback has been submitted.");
         setFormData({ name: "", email: "", message: "", rating: 0 });
       } else {
-        showError("Error", data.message || "Failed to submit feedback.");
+        showError("Error", response.data.message || "Failed to submit feedback.");
       }
     } catch (err) {
       console.error("Error submitting feedback:", err);
       showError("Network Error", "Something went wrong. Please try again.");
     }
   };
+  
 
   return (
     <Container>
