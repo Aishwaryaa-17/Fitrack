@@ -234,11 +234,16 @@ const NavItems = styled.ul`
   gap: 32px;
   padding: 0 6px;
   list-style: none;
+  flex-wrap: wrap; /* ✅ Allow items to wrap on smaller screens */
+  box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
-    display: none;
+    gap: 12px;              /* ✅ Reduce spacing between items */
+    font-size: 14px;        /* ✅ Optional: shrink font size */
+    padding: 0 10px;
   }
 `;
+
 const Navlink = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -283,6 +288,7 @@ const MobileMenu = styled.ul`
   flex-direction: column;
   align-items: start;
   gap: 16px;
+  padding: 0 6px;
   list-style: none;
   width: 90%;
   padding: 12px 40px 24px 40px;
@@ -297,13 +303,7 @@ const MobileMenu = styled.ul`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
-
-  @media (max-width: 480px) {
-    width: 100%;
-    padding: 12px 16px 24px 16px;
-  }
 `;
-
 
 // ✅ Main Component
 const Navbar = ({ currentUser }) => {
