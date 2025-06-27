@@ -3,10 +3,9 @@ import styled from "styled-components";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { Rating } from "@mui/material";
 import { showSuccess, showError } from "../utils/alert";
-// import API from "../api"; 
-// import { submitFeedback } from "../api/index.js";
-import API, { submitFeedback } from "../api"; // ✅ no error
-
+import API from "../api";
+import { submitFeedback } from "../api/index.js";
+// import API, { submitFeedback } from "../api"; 
 
 const Container = styled.div`
   flex: 1;

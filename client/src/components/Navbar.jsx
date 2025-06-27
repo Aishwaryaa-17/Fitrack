@@ -283,7 +283,6 @@ const MobileMenu = styled.ul`
   flex-direction: column;
   align-items: start;
   gap: 16px;
-  padding: 0 6px;
   list-style: none;
   width: 90%;
   padding: 12px 40px 24px 40px;
@@ -298,7 +297,13 @@ const MobileMenu = styled.ul`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 12px 16px 24px 16px;
+  }
 `;
+
 
 // ✅ Main Component
 const Navbar = ({ currentUser }) => {

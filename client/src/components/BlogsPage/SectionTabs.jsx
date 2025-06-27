@@ -11,15 +11,16 @@ const SectionTabsContainer = styled.div`
 `;
 
 const SectionButton = styled.button`
-  padding: 12px 24px;
-  font-size: 18px;
+  padding: 10px 16px;
+  font-size: 16px;
   font-weight: 600;
   color: ${({ theme }) => theme.text_primary};
   background-color: transparent;
   border: none;
   cursor: pointer;
+  white-space: nowrap;
   transition: color 0.3s ease, border-bottom 0.3s ease;
-  
+
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
@@ -29,6 +30,7 @@ const SectionButton = styled.button`
     border-bottom: 3px solid ${({ theme }) => theme.primary};
   }
 `;
+
 
 const SectionTabs = ({ active, onChange }) => {
   return (
