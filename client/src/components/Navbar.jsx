@@ -234,16 +234,11 @@ const NavItems = styled.ul`
   gap: 32px;
   padding: 0 6px;
   list-style: none;
-  flex-wrap: wrap; /* ✅ Allow items to wrap on smaller screens */
-  box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
-    gap: 12px;              /* ✅ Reduce spacing between items */
-    font-size: 14px;        /* ✅ Optional: shrink font size */
-    padding: 0 10px;
+    display: none;
   }
 `;
-
 const Navlink = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -286,24 +281,31 @@ const TextButton = styled.div`
 const MobileMenu = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 16px;
-  padding: 0 6px;
+  align-items: flex-start; /* align items to the left */
+  gap: 12px;
+  padding: 16px 20px;
   list-style: none;
-  width: 90%;
-  padding: 12px 40px 24px 40px;
+
+  width: 100%; /* ✅ full width to prevent overflow */
+  max-width: 100vw; /* ✅ hard cap on width */
+  box-sizing: border-box; /* ✅ include padding in width */
+  
   background: ${({ theme }) => theme.bg};
   position: absolute;
   top: 80px;
   right: 0;
+  
   transition: all 0.6s ease-in-out;
   transform: ${({ isOpen }) =>
     isOpen ? "translateY(0)" : "translateY(-100%)"};
+
   border-radius: 0 0 20px 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   z-index: ${({ isOpen }) => (isOpen ? "1000" : "-1000")};
 `;
+
 
 // ✅ Main Component
 const Navbar = ({ currentUser }) => {

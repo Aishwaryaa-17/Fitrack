@@ -24,8 +24,17 @@ const ChartWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+
+  @media (max-width: 480px) {
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
+
 
 const LegendContainer = styled.div`
   display: flex;
@@ -80,6 +89,7 @@ const CategoryChart = ({ data }) => {
     ...entry,
     color: colors[index % colors.length],
   }));
+  
 
   return (
     <Card>
@@ -90,13 +100,13 @@ const CategoryChart = ({ data }) => {
             {
               data: dataWithColors,
               innerRadius: 30,
-              outerRadius: 120,
+              outerRadius: window.innerWidth < 480 ? 80 : 120,
               paddingAngle: 3,
               cornerRadius: 3,
               colors: dataWithColors.map((d) => d.color),
             },
           ]}
-          height={320}
+          height={window.innerWidth < 480 ? 250 : 320}
           // ✅ Disable the default legend completely
           slotProps={{ legend: { hidden: true } }}
         />
